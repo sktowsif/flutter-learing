@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/utils/app_routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -6,36 +7,46 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Column(
-      children: [
-        Image.asset('assets/images/img_login.png'),
-        const SizedBox(
-          height: 20,
-        ),
-        const Text(
-          'Welcome',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        color: Colors.white,
+        child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Username'),
-              ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Password'),
+              Image.asset(
+                'assets/images/img_login.png',
+                fit: BoxFit.cover,
               ),
               const SizedBox(
                 height: 20,
               ),
-              ElevatedButton(onPressed: () {
-                print('Hi codepur');
-              }, child: Text('Login'))
+              const Text(
+                'Welcome',
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(labelText: 'Username'),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(labelText: 'Password'),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoute.homeRoute);
+                        },
+                        child: const Text('Login'))
+                  ],
+                ),
+              )
             ],
           ),
-        )
-      ],
-    ));
+        ));
   }
 }
