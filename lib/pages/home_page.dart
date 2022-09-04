@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/product_model.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
+import 'package:flutter_catalog/widgets/product_item.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
-  final int _day = 30;
-  final String _name = 'Codepur';
+  final _dummyList = List.generate(4, (index) => products[0]);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Catalog App'),
+        title: const Text('Catalog App'),
       ),
       body: Center(
-        child: Container(
-          child: Text('Welcome to $_day days of Flutter by $_name'),
-        ),
+        child: ListView.builder(
+            itemCount: _dummyList.length,
+            itemBuilder: (context, index) {
+              return ProductItem(product: _dummyList[index]);
+            }),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
     );
   }
 }
